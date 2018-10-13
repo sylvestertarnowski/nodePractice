@@ -1,0 +1,14 @@
+{
+  "name": "second-express-app",
+  "version": "1.0.0",
+  "description": "Second assignment for express app building.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sylvester",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
