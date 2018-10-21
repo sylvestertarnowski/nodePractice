@@ -6,30 +6,19 @@ app.get("/", function(req, res) {
 });
 
 app.get("/speak/:id", function(req, res) {
+    var sounds = {
+        pig: "'Oink'",
+        cow: "'Moo'",
+        dog: "'Woof woof!'",
+        cat: "'Meow'",
+        crow: "'Caw caw!'"
+    };
     var animal = req.params.id;
-    var noise = "";
-    if (animal !== "pig" && animal !== "cow" && animal !== "dog" && animal !== "cat" && animal !== "crow") {
-        res.send("Sorry, page not found... What are you doing with your life?");
-    } else {
-        console.log(animal);
-        switch(animal) {
-            case "pig":
-                noise = "'Oink'";
-                break;
-            case "cow":
-                noise = "'Moo'";
-                break;
-            case "dog":
-                noise = "'Woof Woof!'";
-                break;
-            case "cat":
-                noise = "'Meow!'";
-                break;
-            case "crow":
-                noise = "'Caw caw!'";
-                break;
-        }
+    var noise = sounds[animal];
+    if(sounds[animal]) {
         res.send("The " + animal + " says " + noise);
+    } else {
+        res.send("Sorry, page not found...What are you doing with your life?")
     }
 });
 
