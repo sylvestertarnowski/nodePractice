@@ -8,7 +8,7 @@ app.get("/", function(req, res) {
 app.get("/speak/:id", function(req, res) {
     var animal = req.params.id;
     var noise = "";
-    if (animal !== "pig" && animal !== "cow" && animal != "dog"){
+    if (animal !== "pig" && animal !== "cow" && animal !== "dog" && animal !== "cat" && animal !== "crow") {
         res.send("Sorry, page not found... What are you doing with your life?");
     } else {
         console.log(animal);
@@ -21,6 +21,12 @@ app.get("/speak/:id", function(req, res) {
                 break;
             case "dog":
                 noise = "'Woof Woof!'";
+                break;
+            case "cat":
+                noise = "'Meow!'";
+                break;
+            case "crow":
+                noise = "'Caw caw!'";
                 break;
         }
         res.send("The " + animal + " says " + noise);
