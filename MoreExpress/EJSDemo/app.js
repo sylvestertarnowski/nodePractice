@@ -7,7 +7,7 @@ app.get("/", function(req, res) {
 
 app.get("/fallinlovewith/:thing", function(req, res) {
     var thing = req.params.thing;
-    res.send("You fell in love with " + thing);
+    res.render("love.ejs", {thingVar: thing});
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
