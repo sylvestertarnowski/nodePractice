@@ -13,7 +13,7 @@ app.get("/speak/:id", function(req, res) {
         cat: "'Meow'",
         crow: "'Caw caw!'"
     };
-    var animal = req.params.id;
+    var animal = req.params.id.toLowerCase();
     var noise = sounds[animal];
     if(sounds[animal]) {
         res.send("The " + animal + " says " + noise);
