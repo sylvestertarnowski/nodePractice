@@ -1,11 +1,43 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
 
+mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
+//SCHEMA SETUP
+var campgroundSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+var Campground = mongoose.model("Campground", campgroundSchema);
+
+// Campground.create(
+//                     {
+//                         name: "Bear Grounds", 
+//                         image: "https://images.freeimages.com/images/large-previews/b22/camping-tent-2-1427666.jpg"
+                        
+//                     }, function(err, campground){
+//                       if(err){
+//                         console.log(err);  
+//                       } else {
+//                           console.log("NEWLY CREATED CAMPGROUND: ");
+//                           console.log(campground);
+//                       }
+//                   });
+
+
+
 var campgrounds = [
+    {name: "Salmon Creek", image: "https://images.freeimages.com/images/large-previews/1bc/camping-1407985.jpg"},
+    {name: "Bear Grounds", image: "https://images.freeimages.com/images/large-previews/b22/camping-tent-2-1427666.jpg"},
+    {name: "St Mountain", image: "https://images.freeimages.com/images/large-previews/19a/tent-1-1552981.jpg"},
+    {name: "Salmon Creek", image: "https://images.freeimages.com/images/large-previews/1bc/camping-1407985.jpg"},
+    {name: "Bear Grounds", image: "https://images.freeimages.com/images/large-previews/b22/camping-tent-2-1427666.jpg"},
+    {name: "St Mountain", image: "https://images.freeimages.com/images/large-previews/19a/tent-1-1552981.jpg"},
     {name: "Salmon Creek", image: "https://images.freeimages.com/images/large-previews/1bc/camping-1407985.jpg"},
     {name: "Bear Grounds", image: "https://images.freeimages.com/images/large-previews/b22/camping-tent-2-1427666.jpg"},
     {name: "St Mountain", image: "https://images.freeimages.com/images/large-previews/19a/tent-1-1552981.jpg"}
@@ -16,15 +48,29 @@ app.get("/", function(req, res){
 });
 
 app.get("/campgrounds", function(req, res){
-    res.render("campgrounds", {campgrounds: campgrounds});
+    // Get all campgrounds from DB
+    Campground.find({}, function(err, allCampgrounds){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("campgrounds", {campgrounds: allCampgrounds});
+        }
+    });
+    // res.render("campgrounds", {campgrounds: campgrounds});
 });
 
 app.post("/campgrounds", function(req, res){
     var name = req.body.name;
     var image = req.body.image;
     var newCampground = {name: name, image: image};
-    campgrounds.push(newCampground);
-    res.redirect("/campgrounds");
+    //create a new campground and save to DB
+    Campground.create(newCampground, function(err, newlyCreated){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect("/campgrounds");
+        }
+    });
 });
 
 app.get("/campgrounds/new", function(req, res){
