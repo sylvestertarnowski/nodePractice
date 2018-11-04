@@ -66,6 +66,34 @@ app.get("/blogs/:id", function(req, res){
     });
 });
 
+//EDIT ROUTE
+app.get("/blogs/:id/edit", function(req, res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            res.redirect("/blogs");
+        } else {
+            res.render("edit", {blog: foundBlog});
+        }
+    });
+});
+
+// UPDATE ROUTE
+app.put("/blogs/:id", function(req, res){
+    res.send("Update route");
+});
+
+// DELETE ROUTE
+app.delete("/blogs/:id", function(req, res){
+    //destroy blog
+    Blog.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/blogs");
+        } else {
+            res.redirect("/blogs");
+        }
+    });
+});
+
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is running");
 });
