@@ -5,18 +5,18 @@ var Comment = require("./models/comment");
 var data = [
     {
         name: "Cloud's Rest", 
-        image: "https://cdn.pixabay.com/photo/2017/06/17/03/17/gongga-snow-mountain-2411069_960_720.jpg",
-        description: "Heavenly, truly!"
+        image: "https://images.freeimages.com/images/large-previews/1bc/camping-1407985.jpg",
+        description: "Ham hock short ribs sirloin, biltong tongue shankle pancetta t-bone jerky. Flank picanha ground round frankfurter corned beef porchetta. Spare ribs bacon short loin venison pork chop. Capicola chuck jerky leberkas. Sirloin tongue short ribs ribeye meatball. Jerky fatback biltong leberkas pastrami jowl. Turkey ground round pork loin bresaola boudin, rump tenderloin alcatra sausage filet mignon doner."
     },
     {
         name: "Desert Mountains", 
-        image: "https://cdn.pixabay.com/photo/2015/09/14/13/57/campground-939588_960_720.jpg",
-        description: "Heavenly, truly!"
+        image: "https://images.freeimages.com/images/large-previews/964/scout-camp-1547941.jpg",
+        description: "Ham hock short ribs sirloin, biltong tongue shankle pancetta t-bone jerky. Flank picanha ground round frankfurter corned beef porchetta. Spare ribs bacon short loin venison pork chop. Capicola chuck jerky leberkas. Sirloin tongue short ribs ribeye meatball. Jerky fatback biltong leberkas pastrami jowl. Turkey ground round pork loin bresaola boudin, rump tenderloin alcatra sausage filet mignon doner."
     },
     {
         name: "Canion Den", 
-        image: "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_960_720.jpg",
-        description: "Heavenly, truly!"
+        image: "https://images.freeimages.com/images/large-previews/b5e/camping-1407408.jpg",
+        description: "Ham hock short ribs sirloin, biltong tongue shankle pancetta t-bone jerky. Flank picanha ground round frankfurter corned beef porchetta. Spare ribs bacon short loin venison pork chop. Capicola chuck jerky leberkas. Sirloin tongue short ribs ribeye meatball. Jerky fatback biltong leberkas pastrami jowl. Turkey ground round pork loin bresaola boudin, rump tenderloin alcatra sausage filet mignon doner."
     },
 ];
 
@@ -51,7 +51,6 @@ function seedDB() {
                 });
             });
     });
-    //add a few campgrounds
 }
 
 module.exports = seedDB;
